@@ -1,0 +1,23 @@
+{
+	"namespace":"com.example.avro",
+	"type":"record",
+  	"doc":"Example",
+  	"name": "Example",
+	"fields": [
+	  {
+	    "name": "name",
+	    "type": ["null", "string"],
+	    "avro.java.string": "String"
+	  },
+	  {
+	    "name": "surname",
+	    "type": ["null", "string"],
+	    "avro.java.string": "String"
+	  },
+	  {
+	    "name": "location",
+	    "type": ["null", "string"],
+	    "avro.java.string": "String"
+	  }
+	]
+}

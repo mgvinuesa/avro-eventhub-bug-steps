@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.9</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>avro-eventhub-serializer-1.0.0-beta</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>avro-eventhub-serializer</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>17</java.version>
+		
+		<!-- Old versions in framework -->
+		<azure.schema-regitry.version>1.0.0-beta.4</azure.schema-regitry.version>
+		<azure.identity.version>1.2.1</azure.identity.version>
+		<avro.version>1.10.1</avro.version>
+		
+		<!-- New versions in framework 
+		<azure.schema-regitry.version>1.1.0-beta.1</azure.schema-regitry.version>
+		<azure.identity.version>1.8.0</azure.identity.version>
+		<avro.version>1.11.1</avro.version>
+		-->
+	</properties>
+	<!--
+	
+	-->
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		 <!-- Avro -->
+		<dependency>
+			<groupId>org.apache.avro</groupId>
+			<artifactId>avro</artifactId>
+			<version>${avro.version}</version>
+		</dependency>
+		
+		<!--
+		https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/java/avro 
+		-->
+		<dependency>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>azure-schemaregistry-kafka-avro</artifactId>
+			<version>${azure.schema-regitry.version}</version>
+		</dependency>
+		
+		<!--
+		SDK dependency
+		https://github.com/Azure/azure-sdk-for-java/tree/azure-data-schemaregistry-avro_1.0.0-beta.5/sdk/schemaregistry
+		<dependency>
+  			<groupId>com.azure</groupId>
+  			<artifactId>azure-data-schemaregistry-avro</artifactId>
+  			<version>1.0.0-beta.3</version>
+		</dependency>
+		-->
+		
+		<dependency>
+			<groupId>com.azure</groupId>
+			<artifactId>azure-identity</artifactId>
+			<version>${azure.identity.version}</version>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.avro</groupId>
+				<artifactId>avro-maven-plugin</artifactId>
+				<version>${avro.version}</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>schema</goal>
+						</goals>
+						<configuration>
+							<stringType>String</stringType>
+							<sourceDirectory>${project.basedir}/src/main/resources/avro/</sourceDirectory>
+							<imports>
+								<import>${project.basedir}/src/main/resources/avro/example.avsc</import>
+							</imports>
+							<outputDirectory>${project.build.directory}/generated/avro</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
