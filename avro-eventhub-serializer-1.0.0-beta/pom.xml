@@ -17,8 +17,8 @@
 		<java.version>17</java.version>
 		
 		<!-- Old versions in framework -->
-		<azure.schema-regitry.version>1.0.0-beta.9</azure.schema-regitry.version>
-		<azure.identity.version>1.4.5</azure.identity.version>
+        <azure.schema-regitry.version>1.0.0-beta.4</azure.schema-regitry.version>
+        <azure.identity.version>1.2.1</azure.identity.version>
 		<avro.version>1.10.1</avro.version>
 		
 		<!-- New versions in framework 
