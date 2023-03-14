@@ -1,23 +1,41 @@
 {
-	"namespace":"com.example.avro",
-	"type":"record",
-  	"doc":"Example",
-  	"name": "Example",
-	"fields": [
-	  {
-	    "name": "name",
-	    "type": ["null", "string"],
-	    "avro.java.string": "String"
-	  },
-	  {
-	    "name": "surname",
-	    "type": ["null", "string"],
-	    "avro.java.string": "String"
-	  },
-	  {
-	    "name": "location",
-	    "type": ["null", "string"],
-	    "avro.java.string": "String"
-	  }
-	]
+    "type": "record",
+    "name": "Example",
+    "namespace": "com.example.avro",
+    "doc": "Example",
+    "fields": [
+        {
+            "name": "name",
+            "type": [
+                "null",
+                {
+                    "type": "string",
+                    "avro.java.string": "String"
+                }
+            ],
+            "avro.java.string": "String"
+        },
+        {
+            "name": "surname",
+            "type": [
+                "null",
+                {
+                    "type": "string",
+                    "avro.java.string": "String"
+                }
+            ],
+            "avro.java.string": "String"
+        },
+        {
+            "name": "location",
+            "type": [
+                "null",
+                {
+                    "type": "string",
+                    "avro.java.string": "String"
+                }
+            ],
+            "avro.java.string": "String"
+        }
+    ]
 }
